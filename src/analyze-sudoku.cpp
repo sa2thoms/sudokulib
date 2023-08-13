@@ -1,5 +1,6 @@
 #include "sudoku/analyzeSudokuHelpers.h"
 #include "sudoku/FileNotFoundException.h"
+#include "sudoku/solveSudoku.h"
 
 #include <exception>
 #include <iostream>
@@ -34,8 +35,11 @@ int main(int argc, char ** argv) {
     try {
         std::string fileContents = sudoku::readFile(argVals->sudokuFilePath);
         
-        // TODO (sa2thoms): analyze
-        std::cout << fileContents << std::endl;
+        sudoku::PartialSudoku mySudoku = sudoku::createSudokuFromCsv(fileContents);
+
+        auto solutions = sudoku::findAllSolutions(mySudoku);
+
+        std::cout << "There are " << solutions.size() << " possible solutions to your sudoku." << std::endl;
     }
     catch (sudoku::FileNotFoundException const & e) {
         std::cout << "Could not find file \"" << e.filePath() << "\"" << std::endl;
