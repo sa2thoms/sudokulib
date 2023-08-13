@@ -61,8 +61,10 @@ constexpr bool isValid(PartialSudoku const & sudoku) {
                 }
             }
 
-            for (auto m = i - 1; m < i + 2; m++) {
-                for (auto n = j - 1; n < j + 2; n++) {
+            auto center_i = (i / 3) * 3 + 1;
+            auto center_j = (j / 3) * 3 + 1;
+            for (auto m = center_i - 1; m < center_i + 2; m++) {
+                for (auto n = center_j - 1; n < center_j + 2; n++) {
                     if ((m != i || n != j) && sudoku[m][n] == cell) {
                         return false;
                     }
