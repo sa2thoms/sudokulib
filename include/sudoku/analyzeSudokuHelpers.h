@@ -10,4 +10,6 @@ std::string readFile(std::string const & filePath);
 
 PartialSudoku createSudokuFromCsv(std::string const & csvString);
 
+std::string toString(PartialSudoku const & sudoku);
+
 }

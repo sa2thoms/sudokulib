@@ -40,6 +40,10 @@ int main(int argc, char ** argv) {
         auto solutions = sudoku::findAllSolutions(mySudoku);
 
         std::cout << "There are " << solutions.size() << " possible solutions to your sudoku." << std::endl;
+
+        if (!solutions.empty()) {
+            std::cout << "Here is the first solution:" << std::endl << sudoku::toString(solutions[0]) << std::endl;
+        }
     }
     catch (sudoku::FileNotFoundException const & e) {
         std::cout << "Could not find file \"" << e.filePath() << "\"" << std::endl;

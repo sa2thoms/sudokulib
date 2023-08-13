@@ -6,6 +6,7 @@
 #include "sudoku/constants.h"
 
 #include <fstream>
+#include <sstream>
 
 std::string sudoku::readFile(std::string const & filePath) {
     std::string buffer;
@@ -43,4 +44,24 @@ sudoku::PartialSudoku sudoku::createSudokuFromCsv(std::string const & csvString)
     }
 
     return ret;
+}
+
+std::string sudoku::toString(sudoku::PartialSudoku const & sudoku) {
+    std::stringstream ss;
+    for (auto y = 0; y < sudoku::kNumRows; y++) {
+        for (auto x = 0; x < sudoku::kNumCols; x++) {
+            ss << "+---";
+        }
+        ss << "+\n";
+        for (auto x = 0; x < sudoku::kNumCols; x++) {
+            ss << "| " << static_cast<int>(sudoku.at(y, x)) << " ";
+        }
+        ss << "|\n";
+    }
+    for (auto x = 0; x < sudoku::kNumCols; x++) {
+        ss << "+---";
+    }
+    ss << "+\n";
+
+    return ss.str();
 }
