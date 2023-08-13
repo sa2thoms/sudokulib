@@ -24,9 +24,16 @@ add_executable(analyze-sudoku
 add_executable(partialSudokuTest
                test/PartialSudoku_test.cpp)
 
+add_executable(analyzeSudokuHelpersTest
+               test/analyzeSudokuHelpers_test.cpp
+               src/analyzeSudokuHelpers.cpp)
+
 target_link_libraries(partialSudokuTest PRIVATE gtest)
+target_link_libraries(analyzeSudokuHelpersTest PRIVATE gtest)
 
 set_property(TARGET analyze-sudoku PROPERTY CXX_STANDARD 20)
 set_property(TARGET partialSudokuTest PROPERTY CXX_STANDARD 20)
+set_property(TARGET analyzeSudokuHelpersTest PROPERTY CXX_STANDARD 20)
 
 add_test(NAME PartialSudokuTest COMMAND partialSudokuTest)
+add_test(NAME AnalyzeSudokuHelpersTest COMMAND analyzeSudokuHelpersTest)
