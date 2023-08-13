@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sudoku_Exception.h"
+#include "Exception.h"
 
 #include <string>
 

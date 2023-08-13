@@ -1,5 +1,5 @@
 #include "analyzeSudokuHelpers.h"
-#include "sudoku_FileNotFoundException.h"
+#include "sudoku/FileNotFoundException.h"
 
 #include <exception>
 #include <iostream>
